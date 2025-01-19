@@ -236,7 +236,7 @@ export default function HomePage() {
                 24/7 <span className="text-[--primary-red]">Emergency</span> Plumber
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6">
-                Fast Response Within 60 Minutes • Licensed & Insured
+                Aim to be there within 60 Minutes • Licensed & Insured
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 {isMobile ? (
@@ -300,7 +300,7 @@ export default function HomePage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
               {[
                 {
-                  value: "30+",
+                  value: "15+",
                   label: "Years Experience",
                   icon: Clock,
                   description: "Trusted local plumbers since 1993"
@@ -512,7 +512,7 @@ export default function HomePage() {
                 Your Emergency Is Our Priority
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto">
-                Professional plumbers at your door in 60 minutes or less
+                Aim to be at your door in 60 minutes or less
               </p>
             </div>
 
@@ -543,7 +543,7 @@ export default function HomePage() {
                 <div key={index} className={`relative group ${index === 2 ? 'col-span-2 md:col-span-1 max-w-[250px] md:max-w-none mx-auto md:mx-0' : ''}`}>
                   <div className="bg-black/20 rounded-lg sm:rounded-xl p-3 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 border border-white/10">
                     <div className="relative flex flex-col items-center md:items-start">
-                      <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-12 sm:h-12 bg-[--primary-red] text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-lg shadow-lg">
+                      <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-12 sm:h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-lg border border-white/30 shadow-lg">
                         {String(index + 1).padStart(2, '0')}
                       </div>
                       <div className="bg-white/5 w-10 h-10 sm:w-16 sm:h-16 rounded-lg flex items-center justify-center mb-3 sm:mb-6 border border-white/10">
@@ -573,114 +573,18 @@ export default function HomePage() {
           
           <div className="container mx-auto relative">
             <div className="relative">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 sm:mb-3 md:mb-4 text-gray-900">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-gray-900">
                 Areas We Cover
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-center text-gray-700 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto">
-                Providing fast, reliable emergency plumbing services across the following regions
-              </p>
             </div>
             
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
-              <div className="bg-white rounded-xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-200/80 shadow-sm group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[--primary-blue]/5 via-[--primary-blue]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-[--primary-blue]/10 text-[--primary-blue]">
-                    <Building className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[--primary-blue] mb-2">Hertfordshire</h3>
-                  <div className="flex flex-col items-center gap-2">
-                    <p className={`text-gray-700 text-sm sm:text-base transition-all duration-300 md:h-auto ${expandedCards.includes(0) ? 'h-auto' : 'h-[60px]'} md:overflow-visible overflow-hidden`}>
-                      Our local team responds to emergencies within 60 minutes across Hertfordshire. Available 24/7 for all plumbing issues, with professional plumbers ready to help whenever you need us.
-                    </p>
-                    <button 
-                      onClick={() => toggleCardExpansion(0)}
-                      className="text-[--primary-blue] hover:text-blue-700 text-sm font-medium flex items-center gap-1 mt-1 md:hidden"
-                    >
-                      {expandedCards.includes(0) ? (
-                        <>Show Less <ChevronUp className="w-4 h-4" /></>
-                      ) : (
-                        <>Read More <ChevronDown className="w-4 h-4" /></>
-                      )}
-                    </button>
-                  </div>
+              {["Hertfordshire", "Bedfordshire", "Cambridgeshire", "North London"].map((area) => (
+                <div key={area} className="bg-white rounded-xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-200/80 shadow-sm group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[--primary-blue]/5 via-[--primary-blue]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <h3 className="relative z-10 font-semibold text-gray-900 group-hover:text-[--primary-blue] transition-colors duration-300">{area}</h3>
                 </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-200/80 shadow-sm group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[--primary-blue]/5 via-[--primary-blue]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-[--primary-blue]/10 text-[--primary-blue]">
-                    <Building className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[--primary-blue] mb-2">Bedfordshire</h3>
-                  <div className="flex flex-col items-center gap-2">
-                    <p className={`text-gray-700 text-sm sm:text-base transition-all duration-300 md:h-auto ${expandedCards.includes(1) ? 'h-auto' : 'h-[60px]'} md:overflow-visible overflow-hidden`}>
-                      Rapid emergency response throughout Bedfordshire, with same-day service guaranteed. Our local specialists are on call day and night to handle any plumbing emergency.
-                    </p>
-                    <button 
-                      onClick={() => toggleCardExpansion(1)}
-                      className="text-[--primary-blue] hover:text-blue-700 text-sm font-medium flex items-center gap-1 mt-1 md:hidden"
-                    >
-                      {expandedCards.includes(1) ? (
-                        <>Show Less <ChevronUp className="w-4 h-4" /></>
-                      ) : (
-                        <>Read More <ChevronDown className="w-4 h-4" /></>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-200/80 shadow-sm group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[--primary-blue]/5 via-[--primary-blue]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-[--primary-blue]/10 text-[--primary-blue]">
-                    <Building className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[--primary-blue] mb-2">Cambridgeshire</h3>
-                  <div className="flex flex-col items-center gap-2">
-                    <p className={`text-gray-700 text-sm sm:text-base transition-all duration-300 md:h-auto ${expandedCards.includes(2) ? 'h-auto' : 'h-[60px]'} md:overflow-visible overflow-hidden`}>
-                      Immediate emergency response across Cambridgeshire with our team of local experts. We're available 24/7 to tackle any plumbing crisis with professional, efficient service.
-                    </p>
-                    <button 
-                      onClick={() => toggleCardExpansion(2)}
-                      className="text-[--primary-blue] hover:text-blue-700 text-sm font-medium flex items-center gap-1 mt-1 md:hidden"
-                    >
-                      {expandedCards.includes(2) ? (
-                        <>Show Less <ChevronUp className="w-4 h-4" /></>
-                      ) : (
-                        <>Read More <ChevronDown className="w-4 h-4" /></>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-200/80 shadow-sm group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[--primary-blue]/5 via-[--primary-blue]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-[--primary-blue]/10 text-[--primary-blue]">
-                    <Building className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[--primary-blue] mb-2">North London</h3>
-                  <div className="flex flex-col items-center gap-2">
-                    <p className={`text-gray-700 text-sm sm:text-base transition-all duration-300 md:h-auto ${expandedCards.includes(3) ? 'h-auto' : 'h-[60px]'} md:overflow-visible overflow-hidden`}>
-                      Fast emergency response throughout North London, with local specialists ready 24/7. We guarantee quick arrival times and efficient solutions for all plumbing emergencies.
-                    </p>
-                    <button 
-                      onClick={() => toggleCardExpansion(3)}
-                      className="text-[--primary-blue] hover:text-blue-700 text-sm font-medium flex items-center gap-1 mt-1 md:hidden"
-                    >
-                      {expandedCards.includes(3) ? (
-                        <>Show Less <ChevronUp className="w-4 h-4" /></>
-                      ) : (
-                        <>Read More <ChevronDown className="w-4 h-4" /></>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>

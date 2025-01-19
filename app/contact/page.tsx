@@ -31,13 +31,12 @@ export default function ContactPage() {
         name: (formElements.namedItem('name') as HTMLInputElement)?.value || '',
         email: (formElements.namedItem('email') as HTMLInputElement)?.value || '',
         phone: (formElements.namedItem('phone') as HTMLInputElement)?.value || '',
-        address: (formElements.namedItem('address') as HTMLTextAreaElement)?.value || '',
         service: (formElements.namedItem('service') as HTMLSelectElement)?.value || '',
         message: (formElements.namedItem('message') as HTMLTextAreaElement)?.value || '',
       };
 
       // Validate data before sending
-      if (!data.name || !data.email || !data.phone || !data.address || !data.service || !data.message) {
+      if (!data.name || !data.email || !data.phone || !data.service || !data.message) {
         toast.error('Please fill in all fields');
         return;
       }
@@ -172,19 +171,6 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
-                      Address
-                    </label>
-                    <Textarea
-                      id="address"
-                      name="address"
-                      placeholder="Your full address..."
-                      required
-                      className="min-h-[80px] resize-none"
-                    />
-                  </div>
-
-                  <div>
                     <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
                       Service Required
                     </label>
@@ -269,21 +255,6 @@ export default function ContactPage() {
 
                     <div className="flex items-start space-x-4">
                       <div className="bg-white/10 rounded-lg p-3">
-                        <MapPin className="w-6 h-6 text-[--primary-red]" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg mb-1">Address</h3>
-                        <p className="text-gray-300">
-                          13 Hitchin Road<br />
-                          Weston<br />
-                          Hitchin<br />
-                          SG4 7AY
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-white/10 rounded-lg p-3">
                         <Clock className="w-6 h-6 text-[--primary-red]" />
                       </div>
                       <div>
@@ -302,35 +273,18 @@ export default function ContactPage() {
 
                 {/* Service Areas */}
                 <Card className="p-4 sm:p-8 bg-gradient-to-br from-blue-50 to-white">
-                  <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-[#051c2c]">Areas We Cover</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">Areas We Cover</h2>
                   <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-4">
                     {["Hertfordshire", "Bedfordshire", "Cambridgeshire", "North London"].map((area) => (
-                      <Card key={area} className="p-3 sm:p-4 text-center bg-white shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
-                        <Building className="w-5 h-5 sm:w-6 sm:h-6 text-[--primary-blue] mx-auto mb-2 sm:mb-3" />
-                        <h3 className="font-semibold text-sm sm:text-base text-gray-900">{area}</h3>
+                      <Card key={area} className="p-3 sm:p-4 text-center bg-white shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 group relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[--primary-blue]/5 via-[--primary-blue]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <h3 className="relative z-10 font-semibold text-gray-900 group-hover:text-[--primary-blue] transition-colors duration-300">{area}</h3>
                       </Card>
                     ))}
                   </div>
                 </Card>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Map Section */}
-        <section className="py-16 bg-gradient-to-br from-gray-50 via-white to-blue-50">
-          <div className="container mx-auto px-4 max-w-7xl">
-            <Card className="w-full h-[500px] overflow-hidden shadow-2xl">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2466.989757728456!2d-0.2808888!3d51.8236111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48763c98ffa7a4e7%3A0x9b0317e4c04c44!2s13%20Hitchin%20Rd%2C%20Weston%2C%20Hitchin%20SG4%207AY!5e0!3m2!1sen!2suk!4v1629900000000!5m2!1sen!2suk"
-                width="100%"
-                height="500"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </Card>
           </div>
         </section>
       </main>

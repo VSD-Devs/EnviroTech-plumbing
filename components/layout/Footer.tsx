@@ -76,7 +76,7 @@ export default function Footer() {
           <div>
             <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6">About Us</h3>
             <p className="text-sm sm:text-base text-white/80 leading-relaxed">
-              Your trusted emergency plumbing service, available 24/7 across Hertfordshire, Bedfordshire, Cambridgeshire, and North London.
+              Your trusted emergency plumbing service, available 24/7 across Hertfordshire and London.
             </p>
           </div>
           <div>
@@ -116,10 +116,6 @@ export default function Footer() {
               <li className="flex items-center text-white/80 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 mr-2 text-[--primary-red]" />
                 envirotech-enquiries@outlook.com
-              </li>
-              <li className="flex items-center text-white/80 hover:text-white transition-colors">
-                <MapPin className="w-4 h-4 mr-2 text-[--primary-red]" />
-                13 Hitchin Road, Weston, Hitchin, SG4 7AY
               </li>
             </ul>
           </div>

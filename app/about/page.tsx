@@ -52,10 +52,10 @@ export default function AboutPage() {
             <div className="max-w-3xl mx-auto text-center">
               <h4 className="text-xs sm:text-sm font-semibold text-blue-200 uppercase tracking-wide mb-3">Plumbers Near You</h4>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white">
-                30+ Years of Emergency Plumbing Excellence
+                15+ Years Emergency Plumbing Experience
               </h1>
               <p className="text-lg sm:text-xl text-gray-200 mb-8 sm:mb-10">
-                Emergency plumbers delivering 60-minute response times across Hertfordshire & Bedfordshire. Available 24/7 for all plumbing emergencies.
+                Emergency plumbers delivering fast response times across Hertfordshire & London. Available 24/7 for all plumbing emergencies.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button size="lg" className="bg-[--primary-red] hover:bg-red-500 text-white" onClick={handleCallClick}>
@@ -76,10 +76,10 @@ export default function AboutPage() {
                   Our Story
                 </h2>
                 <p className="text-gray-600 mb-4">
-                  With over three decades of hands-on experience, our master plumbers have solved thousands of emergency plumbing issues across Hertfordshire and Bedfordshire. Our expertise spans everything from complex emergency repairs to advanced diagnostic techniques, ensuring we fix your plumbing emergency right the first time.
+                  With over 15 years of hands-on experience, our master plumbers have solved thousands of emergency plumbing issues across Hertfordshire and London. Our expertise spans everything from complex emergency repairs to advanced diagnostic techniques, ensuring we fix your plumbing emergency right the first time.
                 </p>
                 <p className="text-gray-600 mb-6">
-                  We've built our reputation on rapid 60-minute response times and superior workmanship, becoming the most trusted emergency plumbers in the region. Our team of certified experts is available 24/7, equipped with the latest tools and technology to handle any plumbing emergency, from burst pipes to complex drainage issues.
+                  We've built our reputation as we aim to have a 60-minute response times and superior workmanship, becoming the most trusted emergency plumbers in the region. Our team of certified experts is available 24/7, equipped with the latest tools and technology to handle any plumbing emergency, from burst pipes to complex drainage issues.
                 </p>
                 <div className="space-y-3">
                   <div className="flex items-center text-[--primary-blue]">
@@ -88,7 +88,7 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-center text-[--primary-blue]">
                     <CheckCircle className="w-5 h-5 mr-2" />
-                    <span>60-minute emergency response guarantee</span>
+                    <span>Fast emergency response guarantee</span>
                   </div>
                   <div className="flex items-center text-[--primary-blue]">
                     <CheckCircle className="w-5 h-5 mr-2" />
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg">
                   <div className="flex items-center">
                     <div className="mr-3">
-                      <div className="text-3xl font-bold text-[--primary-blue]">30+</div>
+                      <div className="text-3xl font-bold text-[--primary-blue]">15+</div>
                       <div className="text-sm text-gray-600">Years of Service</div>
                     </div>
                     <Award className="w-12 h-12 text-[--primary-blue]" />
@@ -133,7 +133,7 @@ export default function AboutPage() {
                 {
                   icon: Clock,
                   title: "Fast Response",
-                  description: "We guarantee a 60-minute response time for all emergency calls, because we know every minute counts."
+                  description: "We guarantee a fast response time for all emergency calls, because we know every minute counts."
                 },
                 {
                   icon: Shield,
