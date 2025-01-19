@@ -54,7 +54,7 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Section */}
-        <section className="relative -mt-20 sm:-mt-32 pb-20 px-4 z-30">
+        <section className="relative -mt-10 sm:-mt-20 lg:-mt-32 pb-20 px-4 z-30">
           <div className="container mx-auto max-w-7xl">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
               {/* Contact Form */}
