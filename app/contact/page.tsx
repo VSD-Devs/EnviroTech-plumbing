@@ -10,10 +10,72 @@ import {
 } from "lucide-react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function ContactPage() {
+  const [isLoading, setIsLoading] = useState(false);
   const handleCallClick = (e: React.MouseEvent) => {
     e.preventDefault();
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const form = e.target as HTMLFormElement;
+      const formElements = form.elements as HTMLFormControlsCollection;
+      
+      const data = {
+        name: (formElements.namedItem('name') as HTMLInputElement)?.value || '',
+        email: (formElements.namedItem('email') as HTMLInputElement)?.value || '',
+        phone: (formElements.namedItem('phone') as HTMLInputElement)?.value || '',
+        address: (formElements.namedItem('address') as HTMLTextAreaElement)?.value || '',
+        service: (formElements.namedItem('service') as HTMLSelectElement)?.value || '',
+        message: (formElements.namedItem('message') as HTMLTextAreaElement)?.value || '',
+      };
+
+      // Validate data before sending
+      if (!data.name || !data.email || !data.phone || !data.address || !data.service || !data.message) {
+        toast.error('Please fill in all fields');
+        return;
+      }
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const text = await response.text();
+      let result;
+      
+      try {
+        result = JSON.parse(text);
+      } catch (e) {
+        console.error('Failed to parse response:', text);
+        throw new Error('Invalid server response');
+      }
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      if (result.success) {
+        toast.success('Message sent successfully! We will get back to you soon.');
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error(error instanceof Error ? error.message : 'Failed to send message. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -64,7 +126,7 @@ export default function ContactPage() {
                   <p className="text-gray-600 text-base sm:text-lg">We'll get back to you as soon as possible.</p>
                 </div>
 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -72,6 +134,7 @@ export default function ContactPage() {
                       </label>
                       <Input
                         id="name"
+                        name="name"
                         type="text"
                         placeholder="John Smith"
                         required
@@ -85,6 +148,7 @@ export default function ContactPage() {
                       </label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
                         placeholder="07700 900000"
                         required
@@ -99,10 +163,24 @@ export default function ContactPage() {
                     </label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="john@example.com"
                       required
                       className="h-12"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
+                      Address
+                    </label>
+                    <Textarea
+                      id="address"
+                      name="address"
+                      placeholder="Your full address..."
+                      required
+                      className="min-h-[80px] resize-none"
                     />
                   </div>
 
@@ -112,6 +190,7 @@ export default function ContactPage() {
                     </label>
                     <select
                       id="service"
+                      name="service"
                       className="w-full rounded-md border border-gray-300 bg-white h-12 px-3 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
                       defaultValue="emergency"
                       required
@@ -130,15 +209,29 @@ export default function ContactPage() {
                     </label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Please describe your plumbing issue..."
                       required
                       className="min-h-[150px] resize-none"
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-[--primary-blue] hover:bg-blue-600 h-12 text-lg">
-                    <Send className="w-5 h-5 mr-2" />
-                    Send Message
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-[--primary-blue] hover:bg-blue-600 h-12 text-lg"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <span className="animate-spin mr-2">⏳</span>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5 mr-2" />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               </Card>

@@ -50,7 +50,7 @@ export default function AboutPage() {
           
           <div className="container mx-auto px-4 relative z-20">
             <div className="max-w-3xl mx-auto text-center">
-              <h4 className="text-xs sm:text-sm font-semibold text-blue-200 uppercase tracking-wide mb-3">Emergency Plumbers in Hertfordshire</h4>
+              <h4 className="text-xs sm:text-sm font-semibold text-blue-200 uppercase tracking-wide mb-3">Plumbers Near You</h4>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white">
                 30+ Years of Emergency Plumbing Excellence
               </h1>
