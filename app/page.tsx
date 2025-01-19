@@ -11,18 +11,21 @@ import {
 import { useState, useEffect } from "react";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import { toast } from "sonner";
 
 export default function HomePage() {
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
   const [showCallModal, setShowCallModal] = useState(false);
   const [showCallbackModal, setShowCallbackModal] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [callbackForm, setCallbackForm] = useState({
     name: '',
     phone: '',
     issue: '',
     preferredTime: '',
-    otherIssue: ''
+    otherIssue: '',
+    address: ''
   });
 
   useEffect(() => {
@@ -54,17 +57,67 @@ export default function HomePage() {
     setShowCallbackModal(true);
   };
 
-  const handleCallbackSubmit = (e: React.FormEvent) => {
+  const handleCallbackSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', callbackForm);
-    setCallbackForm({
-      name: '',
-      phone: '',
-      issue: '',
-      preferredTime: '',
-      otherIssue: ''
-    });
-    setShowCallbackModal(false);
+    setIsLoading(true);
+
+    try {
+      // Validate data before sending
+      if (!callbackForm.name || !callbackForm.phone || !callbackForm.issue || !callbackForm.preferredTime) {
+        toast.error('Please fill in all required fields');
+        return;
+      }
+
+      const data = {
+        name: callbackForm.name,
+        phone: callbackForm.phone,
+        service: callbackForm.issue,
+        message: `Preferred Time: ${callbackForm.preferredTime}${callbackForm.address ? `\nAddress: ${callbackForm.address}` : ''}${callbackForm.otherIssue ? `\nAdditional Details: ${callbackForm.otherIssue}` : ''}`,
+        email: 'callback@request.com' // Placeholder email for callback requests
+      };
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const text = await response.text();
+      let result;
+      
+      try {
+        result = JSON.parse(text);
+      } catch (e) {
+        console.error('Failed to parse response:', text);
+        throw new Error('Invalid server response');
+      }
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      if (result.success) {
+        toast.success('Callback request sent successfully! We will contact you soon.');
+        setCallbackForm({
+          name: '',
+          phone: '',
+          issue: '',
+          preferredTime: '',
+          otherIssue: '',
+          address: ''
+        });
+        setShowCallbackModal(false);
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error(error instanceof Error ? error.message : 'Failed to send message. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -104,6 +157,17 @@ export default function HomePage() {
                   onChange={(e) => setCallbackForm({...callbackForm, phone: e.target.value})}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[--primary-blue]"
                   required
+                />
+              </div>
+              <div>
+                <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">Address (Optional)</label>
+                <input
+                  type="text"
+                  id="address"
+                  value={callbackForm.address}
+                  onChange={(e) => setCallbackForm({...callbackForm, address: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[--primary-blue]"
+                  placeholder="Full address including postcode"
                 />
               </div>
               <div>
@@ -155,8 +219,16 @@ export default function HomePage() {
               <button
                 type="submit"
                 className="w-full bg-[--primary-blue] text-white py-3 rounded-md hover:bg-blue-600 transition-colors font-medium mt-6"
+                disabled={isLoading}
               >
-                Submit Request
+                {isLoading ? (
+                  <>
+                    <span className="animate-spin mr-2">⏳</span>
+                    Sending...
+                  </>
+                ) : (
+                  'Submit Request'
+                )}
               </button>
             </form>
           </div>

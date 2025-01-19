@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const body = await req.json() as ContactFormData;
 
     // Validate required fields
-    const requiredFields = ['name', 'email', 'phone', 'address', 'service', 'message'] as const;
+    const requiredFields = ['name', 'email', 'phone', 'service', 'message'] as const;
     for (const field of requiredFields) {
       if (!body[field]?.trim()) {
         return Response.json(
