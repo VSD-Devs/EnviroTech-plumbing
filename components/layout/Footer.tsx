@@ -115,7 +115,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center text-white/80 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 mr-2 text-[--primary-red]" />
-                envirotech-enquiries@outlook.com
+                support@envirotech-plumbing.co.uk
               </li>
             </ul>
           </div>
