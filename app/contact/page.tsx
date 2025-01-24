@@ -247,8 +247,8 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-semibold text-lg mb-1">Email</h3>
                         <p className="text-gray-300 mb-1">Send us an email</p>
-                        <a href="mailto:envirotech-enquiries@outlook.com" className="text-[--primary-red] hover:text-red-400 font-medium break-all">
-                          envirotech-enquiries@outlook.com
+                        <a href="mailto:support@envirotech-plumbing.co.uk" className="text-[--primary-red] hover:text-red-400 font-medium break-all">
+                          support@envirotech-plumbing.co.uk
                         </a>
                       </div>
                     </div>
