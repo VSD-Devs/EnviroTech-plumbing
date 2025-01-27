@@ -53,7 +53,7 @@ export default function Footer() {
                   <Phone className="w-5 h-5 flex-shrink-0" />
                   <input
                     type="text"
-                    value="07934 888 628"
+                    value="02036335504"
                     readOnly
                     className="bg-transparent text-center focus:outline-none cursor-text w-full"
                     onClick={(e) => e.currentTarget.select()}
@@ -106,10 +106,10 @@ export default function Footer() {
               <li className="flex items-center text-white/80 hover:text-white transition-colors">
                 <Phone className="w-4 h-4 mr-2 text-[--primary-red]" />
                 {isMobile ? (
-                  <a href="tel:07934888628">07934 888 628</a>
+                  <a href="tel:02036335504">02036335504</a>
                 ) : (
                   <button onClick={handlePhoneClick} className="hover:text-white transition-colors">
-                    07934 888 628
+                    02036335504
                   </button>
                 )}
               </li>

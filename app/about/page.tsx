@@ -60,7 +60,7 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button size="lg" className="bg-[--primary-red] hover:bg-red-500 text-white" onClick={handleCallClick}>
                   <Phone className="w-5 h-5 mr-2" />
-                  07934 888 628
+                  02036335504
                 </Button>
               </div>
             </div>
@@ -201,7 +201,7 @@ export default function AboutPage() {
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button size="lg" className="bg-[--primary-red] hover:bg-red-600 text-white font-semibold" onClick={handleCallClick}>
                     <Phone className="w-5 h-5 mr-2" />
-                    07934 888 628
+                    02036335504
                   </Button>
                   <Button size="lg" className="bg-white hover:bg-gray-100 text-[--primary-blue] font-semibold">
                     Contact Us

@@ -68,7 +68,7 @@ export default function Navigation({ onCallClick }: NavigationProps) {
               </Link>
               <Button className="bg-[--primary-red] hover:bg-red-600 text-white text-base w-full md:w-auto shadow-md hover:shadow-lg transition-all duration-300 hidden md:flex" onClick={onCallClick}>
                 <Phone className="w-4 h-4 mr-2" />
-                Call Now: 07934 888 628
+                Call Now: 02036335504
               </Button>
             </div>
           </nav>

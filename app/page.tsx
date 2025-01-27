@@ -254,18 +254,18 @@ export default function HomePage() {
               <div className="flex flex-col gap-3">
                 {isMobile ? (
                   <a 
-                    href="tel:07934888628"
+                    href="tel:02036335504"
                     className="bg-[--primary-red] text-white px-6 py-3 rounded-lg font-medium hover:bg-red-600 transition-colors flex items-center justify-center gap-2"
                   >
                     <Phone className="w-5 h-5" />
-                    Call 07934 888 628
+                    Call 02036335504
                   </a>
                 ) : (
                   <div className="flex items-center justify-center gap-2 bg-[--primary-red] text-white px-6 py-3 rounded-lg font-medium">
                     <Phone className="w-5 h-5 flex-shrink-0" />
                     <input
                       type="text"
-                      value="07934 888 628"
+                      value="02036335504"
                       readOnly
                       className="bg-transparent text-center focus:outline-none cursor-text w-full"
                       onClick={(e) => e.currentTarget.select()}
@@ -312,14 +312,14 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 {isMobile ? (
-                  <Button className="bg-[--primary-red] hover:bg-red-500 text-white text-base sm:text-lg md:text-xl w-full sm:w-auto px-4 sm:px-8 py-3 sm:py-5" onClick={() => window.location.href = 'tel:07934888628'}>
+                  <Button className="bg-[--primary-red] hover:bg-red-500 text-white text-base sm:text-lg md:text-xl w-full sm:w-auto px-4 sm:px-8 py-3 sm:py-5" onClick={() => window.location.href = 'tel:02036335504'}>
                     <Phone className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
-                    Call Now: 07934 888 628
+                    Call Now: 02036335504
                   </Button>
                 ) : (
                   <Button className="bg-[--primary-red] hover:bg-red-500 text-white text-base sm:text-lg md:text-xl w-full sm:w-auto px-4 sm:px-8 py-3 sm:py-5" onClick={handleCallClick}>
                     <Phone className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
-                    Call Now: 07934 888 628
+                    Call Now: 02036335504
                   </Button>
                 )}
                 <Button 
@@ -447,7 +447,7 @@ export default function HomePage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button size="lg" className="bg-[--primary-red] hover:bg-red-600 text-white w-full sm:w-auto shadow-lg" onClick={handleCallClick}>
                     <Phone className="w-5 h-5 mr-2" />
-                    Emergency Call: 07934 888 628
+                    Emergency Call: 02036335504
                   </Button>
                 </div>
                 {/* Trust Indicators */}

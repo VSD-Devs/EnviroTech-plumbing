@@ -149,7 +149,7 @@ export default function ContactPage() {
                         id="phone"
                         name="phone"
                         type="tel"
-                        placeholder="07700 900000"
+                        placeholder="02036335504"
                         required
                         className="h-12"
                       />
@@ -234,8 +234,8 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-semibold text-lg mb-1">Phone</h3>
                         <p className="text-gray-300 mb-1">24/7 Emergency Service</p>
-                        <a href="tel:07934888628" className="text-[--primary-red] hover:text-red-400 font-medium text-lg">
-                          07934 888 628
+                        <a href="tel:02036335504" className="text-[--primary-red] hover:text-red-400 font-medium text-lg">
+                          02036335504
                         </a>
                       </div>
                     </div>
