@@ -272,16 +272,34 @@ export default function ContactPage() {
                 </Card>
 
                 {/* Service Areas */}
-                <Card className="p-4 sm:p-8 bg-gradient-to-br from-blue-50 to-white">
-                  <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">Areas We Cover</h2>
-                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-4">
-                    {["Hertfordshire", "Bedfordshire", "Cambridgeshire", "North London"].map((area) => (
-                      <Card key={area} className="p-3 sm:p-4 text-center bg-white shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 group relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[--primary-blue]/5 via-[--primary-blue]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        <h3 className="relative z-10 font-semibold text-gray-900 group-hover:text-[--primary-blue] transition-colors duration-300">{area}</h3>
-                      </Card>
+                <Card className="p-6 sm:p-8 bg-gradient-to-br from-[#051c2c] to-[#0a2942] text-white">
+                  <div className="flex items-center gap-3 mb-6">
+                    <MapPin className="w-6 h-6 text-[--primary-red]" />
+                    <h2 className="text-xl sm:text-2xl font-bold text-white">Areas We Cover</h2>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {[
+                      { name: "Hertfordshire", icon: Building },
+                      { name: "Bedfordshire", icon: Building },
+                      { name: "Cambridgeshire", icon: Building },
+                      { name: "North London", icon: Building }
+                    ].map((area) => (
+                      <div
+                        key={area.name}
+                        className="flex items-center gap-3 p-4 rounded-lg bg-white/10 hover:bg-white/15 transition-all duration-300 group cursor-pointer"
+                      >
+                        <div className="p-2 rounded-full bg-white/10 group-hover:bg-[--primary-red] transition-colors duration-300">
+                          <area.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="font-medium text-white group-hover:text-[--primary-red] transition-colors duration-300">
+                          {area.name}
+                        </span>
+                      </div>
                     ))}
                   </div>
+                  <p className="mt-6 text-sm text-gray-300">
+                    Providing expert plumbing services across these regions. Contact us to confirm service availability in your specific location.
+                  </p>
                 </Card>
               </div>
             </div>

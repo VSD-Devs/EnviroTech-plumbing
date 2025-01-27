@@ -570,25 +570,27 @@ export default function HomePage() {
         </section>
 
         {/* Our Process Section */}
-        <section className="py-6 sm:py-12 md:py-20 bg-gradient-to-br from-[--primary-blue] via-blue-600 to-blue-700 relative overflow-hidden px-4">
+        <section className="py-12 sm:py-20 bg-gradient-to-br from-[#051c2c] to-[#0a2942] relative overflow-hidden px-4">
           {/* Background Design Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -right-10 top-10 w-32 sm:w-72 h-32 sm:h-72 bg-white/5 rounded-full blur-2xl"></div>
-            <div className="absolute -left-10 bottom-10 w-32 sm:w-72 h-32 sm:h-72 bg-[--primary-red]/20 rounded-full blur-2xl"></div>
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid-pattern.svg')] opacity-5" />
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-950/10 to-blue-950/20" />
           </div>
 
           <div className="container mx-auto relative">
-            <div className="text-center mb-4 sm:mb-8 md:mb-16">
-              <h4 className="text-white/80 text-xs sm:text-sm font-semibold uppercase tracking-wide mb-2">HOW WE WORK</h4>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-white">
+            <div className="text-center mb-12 sm:mb-16">
+              <div className="inline-block px-4 py-1.5 bg-white/10 rounded-full backdrop-blur-sm mb-4">
+                <span className="text-white/90 text-sm font-medium">How We Work</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
                 Your Emergency Is Our Priority
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto">
-                Aim to be at your door in 60 minutes or less
+              <p className="text-lg text-white/90 max-w-2xl mx-auto">
+                Professional plumbing service at your doorstep in 60 minutes or less
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 md:gap-8 relative">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative">
               {[
                 {
                   title: "Contact Us",
@@ -600,8 +602,8 @@ export default function HomePage() {
                 {
                   title: "Swift Arrival",
                   icon: Timer,
-                  description: "Our team arrives within 1 hour, fully equipped to handle any plumbing issue.",
-                  status: "1 Hour Response",
+                  description: "Our team arrives promptly, fully equipped to handle any plumbing issue.",
+                  status: "Immediate Response",
                   statusIcon: CheckCircle
                 },
                 {
@@ -612,48 +614,75 @@ export default function HomePage() {
                   statusIcon: Shield
                 }
               ].map((step, index) => (
-                <div key={index} className={`relative group ${index === 2 ? 'col-span-2 md:col-span-1 max-w-[250px] md:max-w-none mx-auto md:mx-0' : ''}`}>
-                  <div className="bg-black/20 rounded-lg sm:rounded-xl p-3 sm:p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 border border-white/10">
-                    <div className="relative flex flex-col items-center md:items-start">
-                      <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-12 sm:h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-lg border border-white/30 shadow-lg">
+                <div key={index} className="relative group">
+                  <div className="h-full bg-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                    <div className="relative flex flex-col">
+                      {/* Step Number */}
+                      <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm text-white rounded-xl flex items-center justify-center font-bold text-lg border border-white/20 shadow-lg">
                         {String(index + 1).padStart(2, '0')}
                       </div>
-                      <div className="bg-white/5 w-10 h-10 sm:w-16 sm:h-16 rounded-lg flex items-center justify-center mb-3 sm:mb-6 border border-white/10">
-                        <step.icon className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
+                      
+                      {/* Icon */}
+                      <div className="bg-[--primary-red]/10 w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg backdrop-blur-sm border border-[--primary-red]/20">
+                        <step.icon className="w-7 h-7 text-[--primary-red]" />
                       </div>
-                    </div>
-                    <div className="text-center md:text-left">
-                      <h3 className="text-base sm:text-xl font-bold mb-1 sm:mb-4 text-white">{step.title}</h3>
-                      <p className="text-xs sm:text-base text-white/80 mb-2 sm:mb-4">
+                      
+                      {/* Content */}
+                      <h3 className="text-xl font-bold mb-3 text-white group-hover:text-white/90 transition-colors">
+                        {step.title}
+                      </h3>
+                      <p className="text-white/80 text-base mb-6 group-hover:text-white/90 transition-colors">
                         {step.description}
                       </p>
-                      <div className="flex items-center text-white font-medium text-xs sm:text-base mt-2 justify-center md:justify-start">
-                        <span className="mr-2">{step.status}</span>
-                        <step.statusIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+                      
+                      {/* Status */}
+                      <div className="mt-auto">
+                        <div className="inline-flex items-center px-3 py-1.5 bg-white/10 rounded-lg text-white/90">
+                          <step.statusIcon className="w-4 h-4 mr-2 text-[--primary-red]" />
+                          <span className="text-sm font-medium">{step.status}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
+
+            {/* CTA Button */}
+            <div className="mt-12 text-center">
+              <button 
+                onClick={handleCallClick}
+                className="inline-flex items-center px-6 py-3 bg-[--primary-red] hover:bg-red-600 text-white rounded-xl font-medium transition-colors shadow-lg group"
+              >
+                <Phone className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+                Get Emergency Help Now
+              </button>
+            </div>
           </div>
         </section>
 
         {/* Service Areas Section */}
-        <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-br from-gray-100 via-white to-blue-50 relative px-4">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
+        <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-br from-gray-50 to-blue-50/50 relative px-4">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent,white_70%)]" />
           
           <div className="container mx-auto relative">
-            <div className="relative">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 md:mb-12 text-gray-900">
+            <div className="text-center mb-8 sm:mb-12">
+              <div className="inline-block px-4 py-1.5 bg-[--primary-blue]/10 rounded-full backdrop-blur-sm mb-4">
+                <span className="text-[--primary-blue] text-sm font-medium">Service Coverage</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-[--primary-blue] to-blue-600 bg-clip-text text-transparent">
                 Areas We Cover
               </h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                Providing fast emergency plumbing services across these locations
+              </p>
             </div>
             
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
               {["Hertfordshire", "Bedfordshire", "Cambridgeshire", "North London"].map((area) => (
-                <div key={area} className="bg-white rounded-xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-200/80 shadow-sm group relative overflow-hidden">
+                <div key={area} className="bg-gradient-to-br from-white via-white to-blue-50/30 rounded-xl p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 border border-blue-100/50 shadow-md group relative overflow-hidden backdrop-blur-sm">
                   <div className="absolute inset-0 bg-gradient-to-br from-[--primary-blue]/5 via-[--primary-blue]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <h3 className="relative z-10 font-semibold text-gray-900 group-hover:text-[--primary-blue] transition-colors duration-300">{area}</h3>
                 </div>
               ))}
