@@ -17,6 +17,7 @@ export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false);
   const handleCallClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    window.location.href = 'tel:02036335504';
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -101,13 +102,18 @@ export default function ContactPage() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white leading-tight">
                 Need Emergency Plumbing Help?
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 leading-relaxe
+              d">
                 We're here for you 24/7. Call us now for immediate assistance.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                <Button size="lg" className="bg-[--primary-red] hover:bg-red-500 text-white text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8">
+                <Button 
+                  size="lg" 
+                  className="bg-[--primary-red] hover:bg-red-500 text-white text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8"
+                  onClick={handleCallClick}
+                >
                   <Phone className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
-                  07934 888 628
+                  02036335504
                 </Button>
               </div>
             </div>
