@@ -294,8 +294,8 @@ export default function ContactPage() {
                         key={area.name}
                         className="flex items-center gap-3 p-4 rounded-lg bg-white/10 hover:bg-white/15 transition-all duration-300 group cursor-pointer"
                       >
-                        <div className="p-2 rounded-full bg-white/10 group-hover:bg-[--primary-red] transition-colors duration-300">
-                          <area.icon className="w-5 h-5 text-white" />
+                        <div className="p-2 rounded-full bg-white/10">
+                          <area.icon className="w-5 h-5 text-[--primary-red]" />
                         </div>
                         <span className="font-medium text-white group-hover:text-[--primary-red] transition-colors duration-300">
                           {area.name}
