@@ -132,6 +132,20 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* Google Ads Tag */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16834700722"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16834700722');
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         {children}
